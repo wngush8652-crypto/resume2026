@@ -1,210 +1,425 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>마주현 | Frontend Developer</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마주현 | Frontend Developer Resume</title>
+    <style>
+      /* 기본 초기화 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      body {
+        background-color: #fcfcfc;
+        color: #333;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+      }
+      *
+        ==========================================
+        [NEW]
+        상단
+        네비게이션
+        헤더
+        영역
+        (Flexbox)
+        ==========================================
+        */
+        .top-navbar {
+        background-color: #fff;
+        border-bottom: 1px solid #f0e6df;
+        position: sticky; /* 스크롤 시 상단 고정 */
+        top: 0;
+        z-index: 1000;
+        padding: 0 20px;
+      }
+      .nav-container {
+        display: flex;
+        max-width: 1100px;
+        height: 70px; /* 네비게이션 높이 */
+        margin: 0 auto;
+        align-items: center; /* 세로 중앙 정렬 */
+        justify-content: space-between; /* 좌우 끝 정렬 */
+      }
+      .logo a {
+        font-size: 22px;
+        font-weight: 900;
+        color: #ff6b6b;
+        letter-spacing: -0.5px;
+      }
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 25px; /* 메뉴 간격 */
+      }
+      .nav-menu a {
+        color: #555;
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-menu a:hover {
+        color: #ff6b6b; /* 마우스 올렸을 때 하이라이트 효과 */
+      }
 
-<body>
+      /* ==========================================
+       기존 이력서 2단 본문 레이아웃 구조
+       ========================================== */
+      .main-container {
+        display: flex;
+        max-width: 1100px;
+        margin: 0 auto;
+        background-color: #fff;
+      }
 
-<div id="resume-container">
+      /* 왼쪽 사이드바 (프로필 정보) */
+      .sidebar {
+        width: 25%;
+        background-color: #eaf7f4; /* 부드러운 민트/하늘색 톤 배경 */
+        padding: 40px 20px;
+        text-align: center;
+      }
+      .profile-img {
+        width: 120px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+      .profile-name {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .profile-job {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 30px;
+      }
+      .info-section {
+        text-align: left;
+        margin-bottom: 30px;
+      }
+      .info-title {
+        font-size: 14px;
+        font-weight: bold;
+        background-color: #cceee7;
+        padding: 3px 8px;
+        display: inline-block;
+        margin-bottom: 15px;
+        border-radius: 2px;
+      }
+      .info-list {
+        list-style: none;
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
+      .info-list li {
+        margin-bottom: 8px;
+        word-break: break-all;
+      }
+      .info-list a {
+        color: #0066cc;
+      }
 
-  <!-- 사이드바 -->
-  <aside class="sidebar">
+      /* 역량 게이지 바 */
+      .skill-bar-container {
+        margin-bottom: 15px;
+      }
+      .skill-name {
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 5px;
+        color: #444;
+      }
+      .progress-bar {
+        width: 100%;
+        height: 12px;
+        background-color: #ddd;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background-color: #3b82f6; /* 파란색 게이지 */
+        border-radius: 6px;
+      }
 
-    <!-- 프로필 -->
-    <section class="profile">
-      <div class="profile-img-wrap">
-       <img src="./profile.jpg" alt="마주현 프로필 사진">
+      /* 오른쪽 상세 컨텐츠 영역 */
+      .content-area {
+        width: 75%;
+        padding: 50px 40px;
+      }
+      .intro-text {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 40px;
+        color: #333;
+      }
+      .intro-text p {
+        margin-bottom: 15px;
+      }
 
+      /* 섹션 공통 */
+      .resume-section {
+        margin-bottom: 45px;
+      }
+      .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #222;
+        border-bottom: 2px solid #222;
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+      }
+      .timeline-item {
+        margin-bottom: 20px;
+      }
+      .timeline-date {
+        font-size: 13px;
+        color: #888;
+        margin-bottom: 5px;
+      }
+      .timeline-content h4 {
+        font-size: 15px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      .timeline-content p {
+        font-size: 14px;
+        color: #555;
+      }
+      .bullet-list {
+        padding-left: 20px;
+        margin-top: 5px;
+        font-size: 13px;
+        color: #666;
+      }
+      .bullet-list li {
+        margin-bottom: 4px;
+      }
+
+      /* 프로젝트 이미지 박스 처리 */
+      .project-card {
+        margin-top: 15px;
+      }
+      .project-card h4 a {
+        color: #222;
+        text-decoration: underline;
+      }
+      .project-card h4 a:hover {
+        color: #ff6b6b;
+      }
+      .project-img-box {
+        margin-top: 15px;
+        max-width: 500px;
+        height: 350px;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        overflow-y: auto; /* 너무 긴 이미지를 스크롤 박스 형태로 깔끔하게 가둠 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .project-img-box img {
+        width: 100%;
+        display: block;
+      }
+
+      /* ==========================================
+       📱 모바일 반응형 브레이크포인트 (767px 이하)
+       ========================================== */
+      @media (max-width: 767px) {
+        .nav-container {
+          height: auto;
+          flex-direction: column;
+          padding: 12px 0;
+          gap: 10px;
+        }
+        .nav-menu {
+          gap: 15px;
+        }
+        .nav-menu a {
+          font-size: 14px;
+        }
+        .main-container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+        }
+        .content-area {
+          width: 100%;
+          padding: 30px 20px;
+        }
+        .project-img-box {
+          max-width: 100%;
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1. [NEW] 상단 네비게이션 헤더 영역 -->
+    <header class="top-navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="#">MA JU HYEON</a>
         </div>
-
-      <h1>마주현</h1>
-      <p class="job-title">Frontend Developer</p>
-    </section>
-
-    <!-- 개인정보 -->
-    <section class="sidebar-section">
-      <h2>개인정보</h2>
-
-      <ul>
-        <li>📞 010-6415-8911</li>
-
-        <li>
-          📧
-          <a href="mailto:wngush8652@gmail.com">
-            wngush8652@gmail.com
-          </a>
-        </li>
-
-        <li>
-          💻
-          <a
-            href="https://github.com/wngush8652-crypto/resume2026"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub Portfolio
-          </a>
-        </li>
-
-        <li>
-          💚
-          <a
-            href="https://blog.naver.com/wngush5669"
-            target="_blank"
-            rel="noopener noreferrer">
-            Naver Blog
-          </a>
-        </li>
-
-        <li>📍 광주시 북구</li>
-      </ul>
-    </section>
-
-    <!-- 자격증 -->
-    <section class="sidebar-section">
-      <h2>자격증</h2>
-
-      <ul>
-        <li>회계 1급</li>
-        <li>정보처리기사 (취득 예정)</li>
-        <li>SQLD (취득 예정)</li>
-      </ul>
-    </section>
-
-    <!-- 프로그램 능력 -->
-    <section class="sidebar-section">
-      <h2>프로그램 능력</h2>
-
-      <div class="skill-item">
-        <p class="skill-name">프로그래밍 언어</p>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill lang"></div>
-        </div>
+        <ul class="nav-menu">
+          <li><a href="#about">소개</a></li>
+          <li><a href="#education">학력</a></li>
+          <li><a href="#experience">경력</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+        </ul>
       </div>
+    </header>
 
-      <div class="skill-item">
-        <p class="skill-name">UI 디자인 프로그램</p>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill ui"></div>
-        </div>
-      </div>
+    <!-- 메인 레이아웃 컨테이너 -->
+    <main class="main-container">
+         <!-- 2. 왼쪽 사이드바 영역 -->
+    <aside class="sidebar">
+      <!-- 💡 컴퓨터 경로 대신 상대 경로(./)를 사용하여 깃허브 배포 시에도 사진이 잘 나오도록 수정했습니다 -->
+      <img src="./profile.jpg" alt="마주현 프로필" class="profile-img">
+      <h1 class="profile-name">마주현</h1>
+      <p class="profile-job">Frontend Developer</p>
 
-      <div class="skill-item">
-        <p class="skill-name">사무용 프로그램</p>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill office"></div>
-        </div>
-      </div>
-    </section>
-
-  </aside>
-
-  <!-- 메인 콘텐츠 -->
-  <main class="main-content">
-
-    <!-- 자기소개 -->
-    <section id="intro" class="resume-section">
-      <p>
-        컴퓨터공학을 전공하지는 않았지만,
-        코드 한 줄로 화면이 바뀌고 사용자에게 새로운 가치를 제공하는
-        프론트엔드의 매력에 매료되어 개발을 시작했습니다.
-      </p>
-
-      <p>
-        비전공자 특유의 끈기와 끊임없는 배움에 대한 열정으로
-        기술적 한계를 극복해 나가며,
-        비즈니스의 성장을 돕는 최적의 디지털 경험을 설계하겠습니다.
-      </p>
-    </section>
-
-    <!-- 학력사항 -->
-    <section id="education" class="resume-section">
-      <h2 class="section-title">학력사항</h2>
-
-      <div class="info-row">
-        <span class="date">2012.03 ~ 2016.02</span>
-        <span class="details">남부대학교 향장미용학과</span>
-      </div>
-
-      <div class="info-row">
-        <span class="date">2009.03 ~ 2012.02</span>
-        <span class="details">광주전대사대부고</span>
-      </div>
-    </section>
-
-    <!-- 경력사항 -->
-    <section id="experience" class="resume-section">
-      <h2 class="section-title">경력사항</h2>
-
-      <div class="info-row">
-        <span class="date">2026.04.29 ~ 2026.09.18 (수료 예정)</span>
-        <span class="details">
-          이스트소프트(ESTsoft) 오르미 프론트엔드 개발자 과정
-        </span>
-      </div>
-
-      <div class="info-row">
-        <span class="date">2026.01.29 ~ 2026.04.28</span>
-        <span class="details">
-          SBS아카데미 컴퓨터학원 광주점 프론트엔드 개발자 과정
-        </span>
-      </div>
-
-      <div class="info-row composite-row">
-        <span class="date">2022.12.05 ~ 2023.12.05</span>
-
-        <div class="details">
-          <p class="company-name">
-            두암한방병원 (병원 피부관리사)
-          </p>
-
-          <ul class="bullet-list">
-            <li>고객 맞춤형 피부 케어 프로그램 설계 및 운영</li>
-            <li>예약 스케줄 관리 및 차트 작성</li>
+        <!-- 개인정보 -->
+        <div class="info-section">
+          <div class="info-title">개인정보</div>
+          <ul class="info-list">
+            <li>📞 010-5415-8911</li>
+            <li>
+              📧 <a href="mailto:wngush8652@gmail.com">wngush8652@gmail.com</a>
+            </li>
+            <li>
+              🔗
+              <a href="https://github.com" target="_blank">GitHub Portfolio</a>
+            </li>
+            <li>
+              💚 <a href="https://naver.com" target="_blank">Naver Blog</a>
+            </li>
+            <li>📍 광주시 북구</li>
           </ul>
         </div>
-      </div>
-    </section>
 
-    <!-- 프로젝트 -->
-    <section id="projects" class="resume-section">
-      <h2 class="section-title">프로젝트</h2>
+        <!-- 자격증 -->
+        <div class="info-section">
+          <div class="info-title">자격증</div>
+          <ul class="info-list">
+            <li>회계 1급</li>
+            <li>정보처리기사 (필기 예정)</li>
+            <li>SQLD (취득 예정)</li>
+          </ul>
+        </div>
 
-      <article class="info-row project-item">
-        <span class="date">2026</span>
+        <!-- 프로그램 능력 -->
+        <div class="info-section">
+          <div class="info-title">프로그램 능력</div>
 
-        <div class="details">
-          <h3 class="project-name">
-            <a
-              href="https://wngush8652-crypto.github.io/resume2026/flex3.html"
-              target="_blank">
-              디저트 상점
-            </a>
-          </h3>
+          <div class="skill-bar-container">
+            <div class="skill-name">프로그래밍 언어</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
 
-          <div class="project-thumb">
-            <a
-              href="https://wngush8652-crypto.github.io/resume2026/flex3.html"
-              target="_blank">
-           
-              <img src="./dessert.jpg" alt="디저트 상점 프로젝트 화면">
+          <div class="skill-bar-container">
+            <div class="skill-name">UI 디자인 프로그램</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+          </div>
 
-               </a>
+          <div class="skill-bar-container">
+            <div class="skill-name">사무용 프로그램</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%"></div>
+            </div>
           </div>
         </div>
-      </article>
-    </section>
+      </aside>
 
-  </main>
+      <!-- 3. 오른쪽 상세 컨텐츠 영역 -->
+      <section class="content-area">
+        <!-- 소개글 -->
+        <div id="about" class="intro-text">
+          <p>
+            컴퓨터공학을 전공하지는 않았지만, 코드 한 줄로 화면이 바뀌고
+            사용자에게 새로운 가치를 제공하는 프론트엔드의 매력에 매료되어
+            개발을 시작했습니다.
+          </p>
+          <p>
+            비전공자 특유의 끈기와 끊임없는 배움에 대한 열정으로 기술적 한계를
+            극복해 나가며, 비즈니스의 성장을 돕는 최적의 디지털 경험을
+            설계하겠습니다.
+          </p>
+        </div>
 
-</div>
+        <!-- 학력사항 -->
+        <section id="education" class="resume-section">
+          <h3 class="section-title">학력사항</h3>
+          <div class="timeline-item">
+            <div class="timeline-date">2012.03 ~ 2016.02</div>
+            <div class="timeline-content">
+              <h4>남부대학교 향장미용학과</h4>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2009.03 ~ 2012.02</div>
+            <div class="timeline-content">
+              <h4>광주전대사대부고등학교</h4>
+            </div>
+          </div>
+        </section>
 
-<footer>
-  <p>© 2026 JuHeon Ma. All rights reserved.</p>
-</footer>
+        <!-- 경력사항 -->
+        <section id="experience" class="resume-section">
+          <h3 class="section-title">경력사항</h3>
+          <div class="timeline-item">
+            <div class="timeline-date">2026.04.29 ~ 2026.09.18 (수료 예정)</div>
+            <div class="timeline-content">
+              <h4>이스트소프트(ESTsoft) 오르미 프론트엔드 개발자 과정</h4>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026.01.29 ~ 2026.04.28</div>
+            <div class="timeline-content">
+              <h4>SBS아카데미 컴퓨터학원 광주점 프론트엔드 개발자 과정</h4>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022.12.05 ~ 2023.12.05</div>
+            <div class="timeline-content">
+              <h4>두암한방병원 (병원 피부관리사)</h4>
+              <ul class="bullet-list">
+                <li>고객 맞춤형 피부 케어 프로그램 설계 및 운영</li>
+                <li>예약 스케줄 관리 및 차트 작성</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 프로젝트 -->
+      <section id="projects" class="resume-section">
+        <h3 class="section-title">프로젝트</h3>
+        <div class="timeline-date">2026</div>
+        <div class="project-card">
+          <h4><a href="#">디저트 상점</a></h4>
+
+          <!-- 이미지 박스 처리: 너무 길었던 캡처 이미지를 스크롤 액자 형태로 예쁘게 정돈했습니다 -->
+          <div class="project-img-box">
+            <img src="./dessert.jpg" alt="디저트 상점 프로젝트 화면">
+          </div> 
+        </div>
+      </section>
+
+    </section> <!-- content-area 닫기 -->
+  </main> <!-- main-container 닫기 -->
 
 </body>
 </html>
