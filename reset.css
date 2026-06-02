@@ -1,5 +1,11 @@
+/* ==========================================
+   기본 초기화 (reset.css)
+   ========================================== */
+
 /* 모든 요소에 공통 적용 */
 * {
+  margin: 0; /* 브라우저가 기본으로 주는 바깥쪽 여백을 0으로 초기화 */
+  padding: 0; /* 브라우저가 기본으로 주는 안쪽 여백을 0으로 초기화 */
   box-sizing: border-box; /* 패딩(안쪽 여백)과 테두리를 포함하여 전체 크기를 계산 (레이아웃 안 깨지게 필수 설정) */
 }
 
@@ -9,7 +15,6 @@ html {
 }
 
 /* 주요 글자 및 레이아웃 태그들의 기본 여백 리셋 */
-body,
 h1,
 h2,
 h3,
@@ -22,8 +27,8 @@ th,
 td,
 form,
 label {
-  margin: 0; /* 브라우저가 기본으로 주는 바깥쪽 여백을 0으로 초기화 */
-  padding: 0; /* 브라우저가 기본으로 주는 안쪽 여백을 0으로 초기화 */
+  margin: 0;
+  padding: 0;
 }
 
 /* 웹 페이지 본문(body) 기본 디자인 설정 */
@@ -34,10 +39,11 @@ body {
     radial-gradient(circle at top right, #ffe4dc 0, transparent 320px),
     /* 우측 상단에 은은한 복숭아빛 원형 그라데이션 */
     linear-gradient(180deg, #fff8f3 0%, #fffdfb 100%); /* 위에서 아래로 갈수록 아주 연한 베이지색에서 흰색으로 변하는 배경 */
-  color: #2f2a26; /* 기본 글자 색상을 따뜻한 느낌의 짙은 브라운 색상으로 설정 */
+  background-color: #fcfcfc; /* 그라데이션 미지원 브라우저용 기본 배경색 대체 지정 */
+  color: #333; /* 기본 글자 색상 설정 */
   font-family:
-    "Pretendard", "Noto Sans KR", sans-serif; /* 1순위 Pretendard 폰트, 없으면 2순위 고딕체 폰트 적용 */
-  line-height: 1.5; /* 글자 줄간격(행간)을 1.5배로 설정하여 가독성을 높임 */
+    "Pretendard", "Noto Sans KR", sans-serif; /* 1순위 Pretendard 폰트, 없으면 2순위 고딕체 Noto Sans KR 폰트 적용 */
+  line-height: 1.6; /* 글자 줄간격(행간)을 1.6배로 설정하여 가독성을 높임 */
 }
 
 /* 리스트 스타일 리셋 */
