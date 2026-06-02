@@ -1,287 +1,201 @@
 /* ==========================================================================
-   1. 초기화 및 가독성 높은 웹 폰트 로드 (Reset & Font Base)
+   1. 전체 공통 스타일 & 모바일 레이아웃 (기본 적용: 320px 이상 모바일 기준)
    ========================================================================== */
-@import url("https://jsdelivr.net");
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  /* 가독성이 검증된 IT 업계 표준 프리텐다드 폰트 적용 */
-  font-family:
-    "Pretendard",
-    -apple-system,
-    BlinkMacSystemFont,
-    system-ui,
-    sans-serif;
-  background-color: #f5f6f8;
-  color: #333333;
-  line-height: 1.65; /* 글줄 안겹치게 행간 자석처럼 확보 */
-  letter-spacing: -0.3px; /* 글자 자간을 조여 눈의 피로 최소화 */
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f4f6f9; /* 트렌디하고 은은한 미색 배경 */
+    color: #333333; /* 눈이 편안한 짙은 회색 글자 */
+    line-height: 1.7; /* 가독성을 위한 최적의 줄간격 */
+    padding: 20px 15px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-/* ==========================================================================
-   2. 레이아웃 컨테이너 (Flexbox 2단 좌우 여백 균형)
-   ========================================================================== */
+/* 메인 컨테이너 */
 #resume-container {
-  display: flex;
-  max-width: 1140px; /* 화면 해상도에 맞춰 기분 좋게 늘림 */
-  margin: 60px auto; /* 상하 60px 여백으로 브라우저 정중앙에 배치 */
-  background-color: #ffffff;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05); /* 은은하고 고급진 입체 그림자 */
-  border-radius: 16px;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column; 
+    gap: 24px;
+    width: 100%;
 }
 
-/* 좌측 연그린 사이드바 파트 */
+/* 🏠 좌측 사이드바 (모바일 버전) */
 .sidebar {
-  width: 320px; /* 내부 요소가 편안하게 배치되는 고정폭 */
-  background-color: #f0f7f4; /* 화면에 나온 부드러운 그린 소프트 톤 구현 */
-  padding: 50px 30px; /* 내부 숨통이 트이도록 숨은 패딩 확보 */
-  border-right: 1px solid rgba(0, 0, 0, 0.03);
+    width: 100%; 
+    background-color: #ffffff;
+    padding: 35px 24px;
+    border-radius: 16px; /* 피그마 스타일의 부드러운 라운딩 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* 은은한 그림자 */
 }
 
-/* 우측 본문 화이트 파트 */
+/* 프로필 이미지 원형 정돈 */
+.sidebar img[alt*="프로필"] {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px auto;
+    border: 3px solid #4a90e2; /* 포인트 블루 컬러 테두리 */
+}
+
+.sidebar h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111111;
+    text-align: center;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.sidebar h2 {
+    font-size: 14px;
+    color: #4a90e2;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* 사이드바 내부 섹션 타이틀 (개인정보, 자격증, 프로그램 능력 등) */
+.sidebar h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+    border-bottom: 2px solid #e1e4e8;
+    padding-bottom: 6px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+}
+
+/* 개인정보 및 텍스트 리스트 정돈 */
+.sidebar p, .sidebar li {
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 10px;
+    list-style: none;
+    line-height: 1.6;
+}
+
+/* 프로그램 능력 게이지 바 스타일 고급화 */
+.sidebar div[style*="background-color"] {
+    border-radius: 10px !important;
+    overflow: hidden;
+    height: 8px !important; /* 게이지 바 두께를 얇고 세련되게 수정 */
+    margin-bottom: 16px;
+}
+
+
+/* 📝 우측 메인 콘텐츠 영역 (모바일 버전) */
 .main-content {
-  flex: 1;
-  padding: 60px 55px; /* 양옆 상하 여백을 크게 벌려 가독성 극대화 */
-  background-color: #ffffff;
-}
-
-/* ==========================================================================
-   3. 좌측 사이드바 세부 밸런스 (프로필/개인정보/자격증)
-   ========================================================================== */
-.profile {
-  text-align: left;
-  margin-bottom: 40px;
-}
-
-.profile .profile-img-wrap {
-  width: 130px;
-  height: 165px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 22px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.profile .profile-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.profile h1 {
-  font-size: 26px;
-  font-weight: 700;
-  color: #111111;
-  margin-bottom: 6px;
-}
-
-.profile .job-title {
-  font-size: 14px;
-  color: #555555;
-  font-weight: 600;
-}
-
-/* 대메뉴 타이틀 하단 여백 규격화 */
-.sidebar-section {
-  margin-bottom: 35px;
-}
-
-.sidebar-section h2 {
-  font-size: 14.5px;
-  font-weight: 700;
-  color: #222222;
-  margin-bottom: 15px;
-  padding-bottom: 4px;
-  border-bottom: 2px solid #222222;
-  width: max-content;
-}
-
-.sidebar-section ul li {
-  font-size: 13px;
-  margin-bottom: 10px; /* 개인정보 간의 쾌적한 폰트 여백 배정 */
-  color: #444444;
-  word-break: break-all;
-}
-
-/* 🛠️ 프로그램 능력 (허공에 뜨던 게이지 바 결합 완료) */
-.skill-item {
-  margin-bottom: 22px;
-  width: 100%;
-}
-
-.skill-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: #333333;
-  margin-bottom: 8px; /* 글씨와 그래프 트랙 간의 미세 이격 조율 */
-}
-
-.progress-bar-bg {
-  width: 100%;
-  height: 7px; /* 둔탁하지 않고 정교해 보이는 두께 프로필 */
-  background-color: rgba(0, 0, 0, 0.07);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background-color: #3498db; /* 시원하고 전문적인 인상의 포인트 스카이블루 */
-  border-radius: 4px;
-  width: 0;
-}
-
-/* 💡 작성된 서브 클래스명과 매칭되어 퍼센트 수치만큼 파란 선이 차오릅니다 */
-.progress-bar-fill.lang {
-  width: 85%;
-}
-.progress-bar-fill.ui {
-  width: 70%;
-}
-.progress-bar-fill.office {
-  width: 90%;
-}
-
-/* ==========================================================================
-   4. 우측 메인 본문 세부 간격 및 정렬 규칙
-   ========================================================================== */
-.resume-section {
-  margin-bottom: 45px; /* 정보 대단락 간의 확실한 구분을 위한 세로축 여백 */
-}
-
-.section-title {
-  font-size: 17.5px;
-  font-weight: 700;
-  color: #111111;
-  margin-bottom: 24px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #eef0f2;
-}
-
-/* 인트로 에세이 스타일 */
-#intro p {
-  font-size: 14.5px;
-  color: #444444;
-  margin-bottom: 14px;
-  text-align: justify;
-}
-
-/* 💡 중요: 날짜 행과 텍스트 내용을 한 줄로 예쁘게 연동시키는 분할 기법 */
-.info-row {
-  display: flex;
-  margin-bottom: 24px;
-  align-items: flex-start;
-}
-
-/* 왼쪽 날짜 영역 가로폭 고정으로 오와 열 정렬 */
-.info-row .date {
-  width: 190px;
-  flex-shrink: 0;
-  font-size: 14px;
-  color: #3498db; /* 날짜 주목성을 위한 선명한 포인트 블루 적용 */
-  font-weight: 600;
-  padding-top: 1px;
-}
-
-/* 우측 세부 텍스트 서식 지정 */
-.info-row .details {
-  flex: 1;
-  font-size: 14.5px;
-  color: #222222;
-  font-weight: 500;
-}
-
-.company-name,
-.project-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: #111111;
-  margin-bottom: 8px;
-}
-
-/* 경력 하단 상세 업무 목록 리스트 간격 정돈 */
-.bullet-list {
-  list-style: disc;
-  margin-left: 20px;
-  margin-top: 10px;
-}
-
-.bullet-list li {
-  font-size: 13.5px;
-  color: #555555;
-  margin-bottom: 6px; /* 줄글 항목 간 줄간격 최적화 */
-}
-
-/* 프로젝트 썸네일 컴포넌트 */
-.project-thumb {
-  margin-top: 14px;
-  max-width: 340px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #eef0f2;
-}
-
-.project-thumb img {
-  width: 100%;
-  display: block;
-  transition: transform 0.25s ease;
-}
-
-.project-thumb img:hover {
-  transform: scale(1.03); /* 마우스를 올렸을 때 살짝 부풀어 오르는 효과 */
-}
-
-/* ==========================================================================
-   5. 하단 푸터 (Footer)
-   ========================================================================== */
-footer {
-  text-align: center;
-  padding: 35px 0;
-  font-size: 12px;
-  color: #8c96a0;
-  background-color: #f5f6f8;
-}
-
-/* ==========================================================================
-   6. 태블릿 & 스마트폰 미디어 쿼리 (반응형 1단 변환)
-   ========================================================================== */
-@media (max-width: 768px) {
-  #resume-container {
-    flex-direction: column;
-    margin: 0;
-    border-radius: 0;
-  }
-  .sidebar,
-  .main-content {
     width: 100%;
-    padding: 35px 22px;
-  }
-  .info-row {
+    display: flex;
     flex-direction: column;
-    gap: 6px;
-  }
-  .info-row .date {
+    gap: 24px;
+}
+
+/* 자기소개, 학력, 경력, 프로젝트 전체를 감싸는 카드 */
+.content-box, 
+.main-content > div {
+    background-color: #ffffff;
+    padding: 35px 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* 메인 대제목 스타일 정돈 (학력사항, 경력사항, 프로젝트 등) */
+.main-content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #111111; /* 세련된 하단 라인 포인트 */
+}
+
+.main-content h2:first-of-type {
+    margin-top: 0;
+}
+
+/* 상단 자기소개서 본문 단락 간격 */
+.main-content p {
+    font-size: 15px;
+    color: #444444;
+    margin-bottom: 16px;
+    word-break: keep-all; /* 한글 단어가 어색하게 잘리지 않도록 방지 */
+}
+
+/* 학력/경력 리스트 배치 정돈 */
+.main-content table, .main-content ul {
     width: 100%;
-  }
+    margin-bottom: 15px;
+}
+
+/* 프로젝트 이미지 크기 및 부드러운 곡률 제어 */
+.main-content img[alt*="디저트"] {
+    width: 100%;
+    max-width: 480px; /* 너무 거대해지지 않도록 최대폭 제한 */
+    height: auto;
+    display: block;
+    margin: 20px 0;
+    border-radius: 12px;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+/* ==========================================================================
+   2. 태블릿 구간 스타일 (Break Point: 768px 이상)
+   ========================================================================== */
+@media (min-width: 768px) {
+    body {
+        padding: 40px 30px;
+    }
+    
+    .sidebar, .content-box, .main-content > div {
+        padding: 40px;
+    }
+}
+
+
+/* ==========================================================================
+   3. 데스크탑 구간 스타일 (Break Point: 1024px 이상)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    #resume-container {
+        flex-direction: row; /* 좌측 사이드바 - 우측 본문 구조 가로 배치 전환 */
+        gap: 32px;
+    }
+    
+    .sidebar {
+        width: 280px; /* 고정 사이드바 적정 너비 */
+        flex-shrink: 0;
+        position: sticky; /* 스크롤 시 사이드바 고정 기능 적용 */
+        top: 40px;
+    }
+    
+    .main-content {
+        flex-grow: 1;
+    }
+}
+
+
+/* ==========================================================================
+   4. 대형 화면 구간 스타일 (Break Point: 1280px 이상)
+   ========================================================================== */
+@media (min-width: 1280px) {
+    #resume-container {
+        max-width: 1140px; /* 화면이 넓어져도 중앙 정렬을 유지하여 레이아웃 고정 */
+        margin: 0 auto;
+    }
+    
+    body {
+        padding: 60px 0;
+    }
 }
