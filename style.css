@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #f4f6f9; /* 트렌디하고 은은한 미색 배경 */
+    background-color: #f4f6f9; /* 은은하고 고급스러운 미색 배경 */
     color: #333333; /* 눈이 편안한 짙은 회색 글자 */
     line-height: 1.7; /* 가독성을 위한 최적의 줄간격 */
     padding: 20px 15px;
@@ -81,12 +81,26 @@ body {
     line-height: 1.6;
 }
 
-/* 프로그램 능력 게이지 바 스타일 고급화 */
+/* 📊 [중요] 프로그램 능력 게이지 바 완벽 고정 스타일 */
+.sidebar p + div {
+    background-color: #eaeaea !important; /* 비어있는 부분의 연회색 트랙 */
+    width: 100% !important;
+    height: 12px !important; /* 선명하고 도톰한 두께감 */
+    border-radius: 20px !important;
+    margin-top: 4px !important;
+    margin-bottom: 16px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    display: block !important;
+}
+
+.sidebar p + div > div,
 .sidebar div[style*="background-color"] {
-    border-radius: 10px !important;
-    overflow: hidden;
-    height: 8px !important; /* 게이지 바 두께를 얇고 세련되게 수정 */
-    margin-bottom: 16px;
+    height: 12px !important; /* 트랙 높이와 완벽 일치 */
+    background-color: #4a90e2 !important; /* 요구하신 선명한 파란색 막대 */
+    border-radius: 20px !important;
+    margin-bottom: 0 !important;
+    display: block !important;
 }
 
 
@@ -98,7 +112,7 @@ body {
     gap: 24px;
 }
 
-/* 자기소개, 학력, 경력, 프로젝트 전체를 감싸는 카드 */
+/* 본문 영역 전체를 감싸는 화이트 카드 카드 박스 */
 .content-box, 
 .main-content > div {
     background-color: #ffffff;
@@ -107,7 +121,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-/* 메인 대제목 스타일 정돈 (학력사항, 경력사항, 프로젝트 등) */
+/* 메인 파트별 대제목 (학력사항, 경력사항, 프로젝트 등) */
 .main-content h2 {
     font-size: 20px;
     font-weight: 700;
@@ -116,19 +130,19 @@ body {
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 8px;
-    border-bottom: 2px solid #111111; /* 세련된 하단 라인 포인트 */
+    border-bottom: 2px solid #111111; /* 세련된 하단 블랙 하이라이트 라인 */
 }
 
 .main-content h2:first-of-type {
     margin-top: 0;
 }
 
-/* 상단 자기소개서 본문 단락 간격 */
+/* 본문 단락 간격 및 텍스트 밸런스 */
 .main-content p {
     font-size: 15px;
     color: #444444;
     margin-bottom: 16px;
-    word-break: keep-all; /* 한글 단어가 어색하게 잘리지 않도록 방지 */
+    word-break: keep-all; /* 한글 단어가 중간에 툭 끊기지 않도록 방지 */
 }
 
 /* 학력/경력 리스트 배치 정돈 */
@@ -137,10 +151,10 @@ body {
     margin-bottom: 15px;
 }
 
-/* 프로젝트 이미지 크기 및 부드러운 곡률 제어 */
+/* 프로젝트 이미지 크기 제어 및 부드러운 라운딩 */
 .main-content img[alt*="디저트"] {
     width: 100%;
-    max-width: 480px; /* 너무 거대해지지 않도록 최대폭 제한 */
+    max-width: 480px; /* 이미지가 지나치게 거대해지는 현상 제어 */
     height: auto;
     display: block;
     margin: 20px 0;
@@ -151,7 +165,7 @@ body {
 
 
 /* ==========================================================================
-   2. 태블릿 구간 스타일 (Break Point: 768px 이상)
+   2. 태블릿 구간 스타일 (Break Point: 768px 이상 일치)
    ========================================================================== */
 @media (min-width: 768px) {
     body {
@@ -165,18 +179,18 @@ body {
 
 
 /* ==========================================================================
-   3. 데스크탑 구간 스타일 (Break Point: 1024px 이상)
+   3. 데스크탑 구간 스타일 (Break Point: 1024px 이상 일치)
    ========================================================================== */
 @media (min-width: 1024px) {
     #resume-container {
-        flex-direction: row; /* 좌측 사이드바 - 우측 본문 구조 가로 배치 전환 */
+        flex-direction: row; /* 좌측 사이드바 - 우측 본문 가로 정렬 배치 분할 */
         gap: 32px;
     }
     
     .sidebar {
-        width: 280px; /* 고정 사이드바 적정 너비 */
+        width: 280px; /* 안정적인 데스크탑용 사이드바 너비 고정 */
         flex-shrink: 0;
-        position: sticky; /* 스크롤 시 사이드바 고정 기능 적용 */
+        position: sticky; /* 스크롤을 내려도 사이드바가 화면에 따라오는 스티키 효과 */
         top: 40px;
     }
     
@@ -187,11 +201,11 @@ body {
 
 
 /* ==========================================================================
-   4. 대형 화면 구간 스타일 (Break Point: 1280px 이상)
+   4. 대형 화면 구간 스타일 (Break Point: 1280px 이상 일치)
    ========================================================================== */
 @media (min-width: 1280px) {
     #resume-container {
-        max-width: 1140px; /* 화면이 넓어져도 중앙 정렬을 유지하여 레이아웃 고정 */
+        max-width: 1140px; /* 너무 넓은 화면에서 레이아웃이 벌어지지 않게 최대 폭 고정 */
         margin: 0 auto;
     }
     
