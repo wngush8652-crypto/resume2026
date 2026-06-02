@@ -8,96 +8,101 @@
 }
 
 body {
-    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #f4f6f9; /* 은은하고 고급스러운 미색 배경 */
-    color: #333333; /* 눈이 편안한 짙은 회색 글자 */
-    line-height: 1.7; /* 가독성을 위한 최적의 줄간격 */
-    padding: 20px 15px;
+    /* 폰트 패밀리를 다듬어 기기마다 가장 선명하고 고른 고딕체로 출력 */
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff; /* 시안 고유의 깨끗한 흰색 전체 배경 */
+    color: #333333;
+    line-height: 1.75; /* 가독성을 위한 최적의 줄간격 확보 */
+    padding: 24px 16px;
+    letter-spacing: -0.3px; /* 글자 자간을 살짝 조여 세련된 인상 부여 */
 }
 
-/* 메인 컨테이너 */
+/* 메인 컨테이너 간격 정돈 */
 #resume-container {
     display: flex;
     flex-direction: column; 
-    gap: 24px;
+    gap: 32px; /* 모바일 요소 간 안정적인 수직 마진 확보 */
     width: 100%;
 }
 
 /* 🏠 좌측 사이드바 (모바일 버전) */
 .sidebar {
     width: 100%; 
-    background-color: #ffffff;
-    padding: 35px 24px;
-    border-radius: 16px; /* 피그마 스타일의 부드러운 라운딩 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* 은은한 그림자 */
+    background-color: #e8f8f0; /* 시안 고유의 연두색(연그린) 배경 */
+    padding: 40px 24px; /* 내부 컴포넌트 여백을 넉넉하게 확장 */
+    border-radius: 16px;
 }
 
-/* 프로필 이미지 원형 정돈 */
+/* 프로필 이미지 원형 크기 및 중앙 정렬 여백 조율 */
 .sidebar img[alt*="프로필"] {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    margin: 0 auto 20px auto;
-    border: 3px solid #4a90e2; /* 포인트 블루 컬러 테두리 */
+    margin: 0 auto 24px auto;
+    border: 3px solid #4a90e2; /* 기존 블루 테두리 보존 */
 }
 
 .sidebar h1 {
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 700; /* 이름 굵기 강조 */
     color: #111111;
     text-align: center;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
 
 .sidebar h2 {
     font-size: 14px;
-    color: #4a90e2;
-    font-weight: 600;
+    color: #111111; /* 글자색 유지 */
+    font-weight: 500;
     text-align: center;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+    margin-bottom: 32px;
 }
 
-/* 사이드바 내부 섹션 타이틀 (개인정보, 자격증, 프로그램 능력 등) */
+/* 사이드바 내부 서브 섹션 타이틀 여백 및 간격 정돈 */
 .sidebar h3 {
     font-size: 15px;
     font-weight: 700;
     color: #111111;
-    border-bottom: 2px solid #e1e4e8;
-    padding-bottom: 6px;
-    margin-top: 28px;
-    margin-bottom: 14px;
+    border-bottom: 2px solid #cbd5e1; /* 깔끔한 구분선 */
+    padding-bottom: 8px;
+    margin-top: 32px; /* 위쪽 항목과의 간격 확보 */
+    margin-bottom: 16px; /* 아래쪽 텍스트 목록과의 간격 확보 */
 }
 
-/* 개인정보 및 텍스트 리스트 정돈 */
+/* 사이드바 개인정보/자격증 텍스트 행간 간격 디테일 조율 */
 .sidebar p, .sidebar li {
     font-size: 13px;
-    color: #555555;
-    margin-bottom: 10px;
+    color: #333333;
+    margin-bottom: 12px; /* 행간 간격 정돈 */
     list-style: none;
     line-height: 1.6;
 }
 
-/* 📊 [중요] 프로그램 능력 게이지 바 완벽 고정 스타일 */
+.sidebar p:last-child, .sidebar li:last-child {
+    margin-bottom: 0;
+}
+
+/* 📊 [스타일 보존] 프로그램 능력 게이지 바 바탕 트랙 */
 .sidebar p + div {
-    background-color: #eaeaea !important; /* 비어있는 부분의 연회색 트랙 */
+    background-color: #eaeaea !important; /* 원래 연회색 바탕 고정 */
     width: 100% !important;
-    height: 12px !important; /* 선명하고 도톰한 두께감 */
+    height: 12px !important; /* 도톰한 두께 유지 */
     border-radius: 20px !important;
-    margin-top: 4px !important;
-    margin-bottom: 16px !important;
+    margin-top: 6px !important;
+    margin-bottom: 20px !important; /* 다음 스킬 항목과의 여백 */
     overflow: hidden !important;
     position: relative !important;
     display: block !important;
 }
 
+/* 📊 [스타일 보존] 내부에서 실질적으로 채워지는 파란색 막대 */
 .sidebar p + div > div,
 .sidebar div[style*="background-color"] {
-    height: 12px !important; /* 트랙 높이와 완벽 일치 */
-    background-color: #4a90e2 !important; /* 요구하신 선명한 파란색 막대 */
+    height: 12px !important;
+    background-color: #4a90e2 !important; /* 원래 파란색 막대 고정 */
     border-radius: 20px !important;
     margin-bottom: 0 !important;
     display: block !important;
@@ -109,58 +114,68 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 40px; /* 섹션(학력, 경력, 프로젝트) 간 가독성 높은 큰 여백 배치 */
 }
 
-/* 본문 영역 전체를 감싸는 화이트 카드 카드 박스 */
+/* 본문 영역 전체 화이트 카드 기본 틀 조율 */
 .content-box, 
 .main-content > div {
     background-color: #ffffff;
-    padding: 35px 28px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 10px 4px; /* 피그마 레이아웃식 좌우 밀착형 여백 조율 */
 }
 
-/* 메인 파트별 대제목 (학력사항, 경력사항, 프로젝트 등) */
+/* 메인 대제목 스타일 간격 세밀 교정 (학력사항, 경력사항, 프로젝트) */
 .main-content h2 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: #111111;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 24px;
     position: relative;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #111111; /* 세련된 하단 블랙 하이라이트 라인 */
+    padding-bottom: 10px;
+    border-bottom: 2px solid #111111; /* 선명한 블랙 언더라인 */
 }
 
 .main-content h2:first-of-type {
     margin-top: 0;
 }
 
-/* 본문 단락 간격 및 텍스트 밸런스 */
+/* 본문 자기소개 단락 간 여백 조율 */
 .main-content p {
     font-size: 15px;
-    color: #444444;
-    margin-bottom: 16px;
-    word-break: keep-all; /* 한글 단어가 중간에 툭 끊기지 않도록 방지 */
+    color: #333333;
+    margin-bottom: 20px;
+    word-break: keep-all; /* 한글 단어가 중간에 어색하게 쪼개져 줄바꿈되는 현상 방지 */
 }
 
-/* 학력/경력 리스트 배치 정돈 */
+/* 학력/경력 영역 날짜 및 텍스트 폰트 스타일 */
+.main-content span, 
+.main-content td:first-child,
+.main-content p[style*="color"] {
+    color: #111111 !important; /* 기존 글자색 유지 */
+    font-weight: 500;
+}
+
+/* 학력/경력 내용 리스트 여백 */
 .main-content table, .main-content ul {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 24px;
 }
 
-/* 프로젝트 이미지 크기 제어 및 부드러운 라운딩 */
+.main-content li {
+    margin-bottom: 8px; /* 리스트 점 항목 간 가로 간격 여백 */
+}
+
+/* 프로젝트 이미지 크기 밸런스 및 고급스러운 라운딩 형태 정돈 */
 .main-content img[alt*="디저트"] {
     width: 100%;
-    max-width: 480px; /* 이미지가 지나치게 거대해지는 현상 제어 */
+    max-width: 520px; /* 본문과 가장 이상적인 밸런스를 맞추도록 최대폭 미세 조정 */
     height: auto;
     display: block;
-    margin: 20px 0;
+    margin: 24px 0;
     border-radius: 12px;
-    border: 1px solid #e1e4e8;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* 부드럽고 자연스러운 그림자 효과 레이어 */
 }
 
 
@@ -169,11 +184,11 @@ body {
    ========================================================================== */
 @media (min-width: 768px) {
     body {
-        padding: 40px 30px;
+        padding: 40px 32px;
     }
     
-    .sidebar, .content-box, .main-content > div {
-        padding: 40px;
+    .sidebar {
+        padding: 48px 36px;
     }
 }
 
@@ -183,14 +198,14 @@ body {
    ========================================================================== */
 @media (min-width: 1024px) {
     #resume-container {
-        flex-direction: row; /* 좌측 사이드바 - 우측 본문 가로 정렬 배치 분할 */
-        gap: 32px;
+        flex-direction: row; /* 시안 구조에 맞춰 좌측 연두바 - 우측 흰본문 좌우 정렬 분할 */
+        gap: 48px; /* 사이드바와 본문 사이의 최적의 간격 배치 */
     }
     
     .sidebar {
-        width: 280px; /* 안정적인 데스크탑용 사이드바 너비 고정 */
+        width: 280px; /* 본문 폰트 비율에 최적화된 사이드바 고정 가로폭 정돈 */
         flex-shrink: 0;
-        position: sticky; /* 스크롤을 내려도 사이드바가 화면에 따라오는 스티키 효과 */
+        position: sticky; /* 스크롤 시 부드럽게 고정되어 따라오는 기능 */
         top: 40px;
     }
     
@@ -205,11 +220,7 @@ body {
    ========================================================================== */
 @media (min-width: 1280px) {
     #resume-container {
-        max-width: 1140px; /* 너무 넓은 화면에서 레이아웃이 벌어지지 않게 최대 폭 고정 */
+        max-width: 1200px; /* 초대형 모니터에서도 화면 레이아웃이 옆으로 너무 번지지 않도록 고정 */
         margin: 0 auto;
-    }
-    
-    body {
-        padding: 60px 0;
     }
 }
