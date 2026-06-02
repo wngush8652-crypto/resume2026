@@ -8,40 +8,41 @@
 }
 
 body {
+    /* 기기별 가장 선명한 표준 고딕 서체 매칭 및 자간 미세 조정 */
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #ffffff; /* 시안 고유의 깨끗한 흰색 전체 배경 */
     color: #333333;
-    line-height: 1.75;
-    padding: 24px 16px;
-    letter-spacing: -0.3px;
+    line-height: 1.8; /* 줄간격을 넓혀 본문 가독성 극대화 */
+    padding: 32px 20px;
+    letter-spacing: -0.4px; /* 자간을 살짝 좁혀 세련된 폰트 룩 연출 */
 }
 
-/* 메인 컨테이너 */
+/* 메인 컨테이너 간격 정돈 */
 #resume-container {
     display: flex;
     flex-direction: column; 
-    gap: 32px;
+    gap: 40px; /* 모바일 환경에서 각 구역 간의 확실한 여백 확보 */
     width: 100%;
 }
 
 /* 🏠 좌측 사이드바 (모바일 버전) */
 .sidebar {
     width: 100%; 
-    background-color: #e8f8f0; /* 시안 고유의 연두색(연그린) 배경 */
-    padding: 40px 24px;
+    background-color: #e8f8f0; /* 시안 고유의 연두색 배경 */
+    padding: 40px 28px; /* 내부 컴포넌트 여백 확장 */
     border-radius: 16px;
 }
 
-/* 🔲 [프로필 사진] 동그라미 대신 완벽한 직각 네모 상자로 변경 */
+/* 🔲 [프로필 사진] 완벽한 직각 네모 상자 유지 */
 .sidebar img[alt*="프로필"] {
     width: 130px;
     height: 130px;
-    border-radius: 0 !important; /* 0으로 변경하여 부드러운 모서리 없이 칼같이 떨어지는 네모 완성 */
+    border-radius: 0 !important; 
     object-fit: cover;
     display: block;
     margin: 0 auto 24px auto;
     border: 3px solid #4a90e2; /* 기존 블루 테두리 보존 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 은은한 그림자 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); 
 }
 
 .sidebar h1 {
@@ -55,13 +56,13 @@ body {
 
 .sidebar h2 {
     font-size: 14px;
-    color: #111111;
+    color: #555555;
     font-weight: 500;
     text-align: center;
     margin-bottom: 32px;
 }
 
-/* 사이드바 내부 섹션 타이틀 */
+/* 사이드바 내부 서브 섹션 타이틀 */
 .sidebar h3 {
     font-size: 15px;
     font-weight: 700;
@@ -72,10 +73,10 @@ body {
     margin-bottom: 16px;
 }
 
-/* 사이드바 텍스트 리스트 */
+/* 사이드바 연락처 및 정보 리스트 */
 .sidebar p, .sidebar li {
     font-size: 13px;
-    color: #333333;
+    color: #444444;
     margin-bottom: 12px;
     list-style: none;
     line-height: 1.6;
@@ -85,7 +86,7 @@ body {
     margin-bottom: 0;
 }
 
-/* 📊 프로그램 능력 게이지 바 바탕 트랙 */
+/* 📊 프로그램 능력 게이지 바 스타일 고정 */
 .sidebar p + div {
     background-color: #eaeaea !important;
     width: 100% !important;
@@ -98,7 +99,6 @@ body {
     display: block !important;
 }
 
-/* 📊 내부에서 실질적으로 채워지는 파란색 막대 */
 .sidebar p + div > div,
 .sidebar div[style*="background-color"] {
     height: 12px !important;
@@ -114,68 +114,89 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 48px; /* 학력, 경력, 프로젝트 대메뉴 간의 시원시원한 간격 분리 */
 }
 
-/* 본문 영역 전체 화이트 카드 */
+/* 본문 개별 콘텐츠 박스 여백 조율 */
 .content-box, 
 .main-content > div {
     background-color: #ffffff;
-    padding: 10px 4px;
+    padding: 10px 8px; /* 본문 텍스트 좌우 정렬 마진 정돈 */
 }
 
-/* 메인 파트별 대제목 (학력사항, 경력사항, 프로젝트) */
+/* 메인 대제목 언더라인 디자인 교정 */
 .main-content h2 {
     font-size: 22px;
     font-weight: 700;
     color: #111111;
     margin-top: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 28px; /* 타이틀과 하위 내용 사이의 여백 확보 */
     position: relative;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #111111; /* 선명한 블랙 언더라인 */
+    padding-bottom: 12px;
+    border-bottom: 2px solid #111111; /* 트렌디한 블랙 라인 */
 }
 
 .main-content h2:first-of-type {
     margin-top: 0;
 }
 
-/* 본문 스타일 */
+/* 본문 자기소개 단락 스타일 */
 .main-content p {
     font-size: 15px;
-    color: #333333;
-    margin-bottom: 20px;
-    word-break: keep-all;
+    color: #2c3e50; /* 가독성을 높인 딥 다크 그레이 */
+    margin-bottom: 24px;
+    word-break: keep-all; /* 한글 단어가 어색하게 끊겨서 줄바꿈되지 않도록 제어 */
 }
 
-/* 학력/경력 영역 날짜 및 텍스트 */
+/* 🎨 [핵심 변경] 날짜 및 기간 텍스트 스타일 세련되게 변경 */
 .main-content span, 
 .main-content td:first-child,
 .main-content p[style*="color"] {
-    color: #111111 !important;
+    color: #7f8c8d !important; /* 대제목과 구분되도록 부드러운 고급 회색으로 변경 */
+    font-size: 14px;
     font-weight: 500;
+    padding-right: 15px;
 }
 
-/* 학력/경력 내용 리스트 여백 */
-.main-content table, .main-content ul {
+/* 학력/경력 상세 내용 텍스트 스타일 */
+.main-content td:last-child {
+    font-size: 15px;
+    color: #111111;
+    font-weight: 500;
+    padding-bottom: 12px; /* 행 간의 조밀함 해결 */
+}
+
+/* 테이블 구조 여백 정돈 */
+.main-content table {
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+/* 경력사항 불릿 항목 간격 다듬기 */
+.main-content ul {
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 8px;
     margin-bottom: 24px;
 }
 
 .main-content li {
-    margin-bottom: 8px;
+    font-size: 14.5px;
+    color: #333333;
+    margin-bottom: 10px; /* 불릿 포인트 간의 수직 간격 넓힘 */
 }
 
-/* 프로젝트 이미지 제어 및 곡률 설정 */
+/* 프로젝트 이미지 크기 및 부드러운 그림자 레이어 정돈 */
 .main-content img[alt*="디저트"] {
     width: 100%;
-    max-width: 520px;
+    max-width: 540px; /* 타이포그래피 비율과 조화를 이루는 적정 폭 제한 */
     height: auto;
     display: block;
-    margin: 24px 0;
-    border-radius: 12px;
+    margin: 28px 0;
+    border-radius: 12px; /* 이미지 모서리 라운딩 처리 */
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* 세련되고 부드러운 그림자 효과 */
 }
 
 
@@ -184,7 +205,7 @@ body {
    ========================================================================== */
 @media (min-width: 768px) {
     body {
-        padding: 40px 32px;
+        padding: 40px 36px;
     }
     
     .sidebar {
@@ -198,14 +219,14 @@ body {
    ========================================================================== */
 @media (min-width: 1024px) {
     #resume-container {
-        flex-direction: row; /* 좌측 연두바 - 우측 흰본문 가로 정렬 분할 */
-        gap: 48px;
+        flex-direction: row; /* 좌측 사이드바 - 우측 본문 가로 정렬 분할 */
+        gap: 56px; /* 데스크탑 화면에서 두 구역 사이의 균형 잡힌 간격 배치 */
     }
     
     .sidebar {
-        width: 280px; /* 고정 가로폭 정돈 */
+        width: 290px; /* 사이드바 가로폭 최적화 */
         flex-shrink: 0;
-        position: sticky;
+        position: sticky; /* 스크롤 시 고정되어 따라오는 스마트 스티키 기능 */
         top: 40px;
     }
     
@@ -220,7 +241,7 @@ body {
    ========================================================================== */
 @media (min-width: 1280px) {
     #resume-container {
-        max-width: 1200px;
+        max-width: 1200px; /* 울트라와이드 모니터에서 레이아웃 깨짐 방지 */
         margin: 0 auto;
     }
 }
