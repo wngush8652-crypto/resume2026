@@ -4,267 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마주현 | Frontend Developer Resume</title>
-    <style>
-      /* 기본 초기화 */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Noto Sans KR", sans-serif;
-      }
-      body {
-        background-color: #fcfcfc;
-        color: #333;
-        line-height: 1.6;
-      }
-      a {
-        text-decoration: none;
-      }
-      *
-        ==========================================
-        [NEW]
-        상단
-        네비게이션
-        헤더
-        영역
-        (Flexbox)
-        ==========================================
-        */
-        .top-navbar {
-        background-color: #fff;
-        border-bottom: 1px solid #f0e6df;
-        position: sticky; /* 스크롤 시 상단 고정 */
-        top: 0;
-        z-index: 1000;
-        padding: 0 20px;
-      }
-      .nav-container {
-        display: flex;
-        max-width: 1100px;
-        height: 70px; /* 네비게이션 높이 */
-        margin: 0 auto;
-        align-items: center; /* 세로 중앙 정렬 */
-        justify-content: space-between; /* 좌우 끝 정렬 */
-      }
-      .logo a {
-        font-size: 22px;
-        font-weight: 900;
-        color: #ff6b6b;
-        letter-spacing: -0.5px;
-      }
-      .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: 25px; /* 메뉴 간격 */
-      }
-      .nav-menu a {
-        color: #555;
-        font-size: 15px;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-      .nav-menu a:hover {
-        color: #ff6b6b; /* 마우스 올렸을 때 하이라이트 효과 */
-      }
-
-      /* ==========================================
-       기존 이력서 2단 본문 레이아웃 구조
-       ========================================== */
-      .main-container {
-        display: flex;
-        max-width: 1100px;
-        margin: 0 auto;
-        background-color: #fff;
-      }
-
-      /* 왼쪽 사이드바 (프로필 정보) */
-      .sidebar {
-        width: 25%;
-        background-color: #eaf7f4; /* 부드러운 민트/하늘색 톤 배경 */
-        padding: 40px 20px;
-        text-align: center;
-      }
-      .profile-img {
-        width: 120px;
-        height: 150px;
-        object-fit: cover;
-        margin-bottom: 20px;
-        border-radius: 4px;
-      }
-      .profile-name {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      .profile-job {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 30px;
-      }
-      .info-section {
-        text-align: left;
-        margin-bottom: 30px;
-      }
-      .info-title {
-        font-size: 14px;
-        font-weight: bold;
-        background-color: #cceee7;
-        padding: 3px 8px;
-        display: inline-block;
-        margin-bottom: 15px;
-        border-radius: 2px;
-      }
-      .info-list {
-        list-style: none;
-        font-size: 13px;
-        margin-bottom: 20px;
-      }
-      .info-list li {
-        margin-bottom: 8px;
-        word-break: break-all;
-      }
-      .info-list a {
-        color: #0066cc;
-      }
-
-      /* 역량 게이지 바 */
-      .skill-bar-container {
-        margin-bottom: 15px;
-      }
-      .skill-name {
-        font-size: 12px;
-        text-align: left;
-        margin-bottom: 5px;
-        color: #444;
-      }
-      .progress-bar {
-        width: 100%;
-        height: 12px;
-        background-color: #ddd;
-        border-radius: 6px;
-        overflow: hidden;
-      }
-      .progress-fill {
-        height: 100%;
-        background-color: #3b82f6; /* 파란색 게이지 */
-        border-radius: 6px;
-      }
-
-      /* 오른쪽 상세 컨텐츠 영역 */
-      .content-area {
-        width: 75%;
-        padding: 50px 40px;
-      }
-      .intro-text {
-        font-size: 15px;
-        line-height: 1.7;
-        margin-bottom: 40px;
-        color: #333;
-      }
-      .intro-text p {
-        margin-bottom: 15px;
-      }
-
-      /* 섹션 공통 */
-      .resume-section {
-        margin-bottom: 45px;
-      }
-      .section-title {
-        font-size: 20px;
-        font-weight: bold;
-        color: #222;
-        border-bottom: 2px solid #222;
-        padding-bottom: 8px;
-        margin-bottom: 20px;
-      }
-      .timeline-item {
-        margin-bottom: 20px;
-      }
-      .timeline-date {
-        font-size: 13px;
-        color: #888;
-        margin-bottom: 5px;
-      }
-      .timeline-content h4 {
-        font-size: 15px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 5px;
-      }
-      .timeline-content p {
-        font-size: 14px;
-        color: #555;
-      }
-      .bullet-list {
-        padding-left: 20px;
-        margin-top: 5px;
-        font-size: 13px;
-        color: #666;
-      }
-      .bullet-list li {
-        margin-bottom: 4px;
-      }
-
-      /* 프로젝트 이미지 박스 처리 */
-      .project-card {
-        margin-top: 15px;
-      }
-      .project-card h4 a {
-        color: #222;
-        text-decoration: underline;
-      }
-      .project-card h4 a:hover {
-        color: #ff6b6b;
-      }
-      .project-img-box {
-        margin-top: 15px;
-        max-width: 500px;
-        height: 350px;
-        border: 1px solid #eee;
-        border-radius: 6px;
-        overflow-y: auto; /* 너무 긴 이미지를 스크롤 박스 형태로 깔끔하게 가둠 */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      }
-      .project-img-box img {
-        width: 100%;
-        display: block;
-      }
-
-      /* ==========================================
-       📱 모바일 반응형 브레이크포인트 (767px 이하)
-       ========================================== */
-      @media (max-width: 767px) {
-        .nav-container {
-          height: auto;
-          flex-direction: column;
-          padding: 12px 0;
-          gap: 10px;
-        }
-        .nav-menu {
-          gap: 15px;
-        }
-        .nav-menu a {
-          font-size: 14px;
-        }
-        .main-container {
-          flex-direction: column;
-        }
-        .sidebar {
-          width: 100%;
-        }
-        .content-area {
-          width: 100%;
-          padding: 30px 20px;
-        }
-        .project-img-box {
-          max-width: 100%;
-          height: 250px;
-        }
-      }
-    </style>
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- 1. [NEW] 상단 네비게이션 헤더 영역 -->
+    <!-- 1. 상단 네비게이션 헤더 영역 -->
     <header class="top-navbar">
       <div class="nav-container">
         <div class="logo">
@@ -281,12 +26,12 @@
 
     <!-- 메인 레이아웃 컨테이너 -->
     <main class="main-container">
-         <!-- 2. 왼쪽 사이드바 영역 -->
-    <aside class="sidebar">
-      <!-- 💡 컴퓨터 경로 대신 상대 경로(./)를 사용하여 깃허브 배포 시에도 사진이 잘 나오도록 수정했습니다 -->
-      <img src="./profile.jpg" alt="마주현 프로필" class="profile-img">
-      <h1 class="profile-name">마주현</h1>
-      <p class="profile-job">Frontend Developer</p>
+      <!-- 2. 왼쪽 사이드바 영역 -->
+      <aside class="sidebar">
+        <!-- 상대 경로(./)를 사용하여 이미지 지정 -->
+        <img src="./profile.jpg" alt="마주현 프로필" class="profile-img" />
+        <h1 class="profile-name">마주현</h1>
+        <p class="profile-job">Frontend Developer</p>
 
         <!-- 개인정보 -->
         <div class="info-section">
@@ -405,21 +150,22 @@
         </section>
 
         <!-- 프로젝트 -->
-      <section id="projects" class="resume-section">
-        <h3 class="section-title">프로젝트</h3>
-        <div class="timeline-date">2026</div>
-        <div class="project-card">
-          <h4><a href="#">디저트 상점</a></h4>
+        <section id="projects" class="resume-section">
+          <h3 class="section-title">프로젝트</h3>
+          <div class="timeline-date">2026</div>
+          <div class="project-card">
+            <h4><a href="#">디저트 상점</a></h4>
 
-          <!-- 이미지 박스 처리: 너무 길었던 캡처 이미지를 스크롤 액자 형태로 예쁘게 정돈했습니다 -->
-          <div class="project-img-box">
-            <img src="./dessert.jpg" alt="디저트 상점 프로젝트 화면">
-          </div> 
-        </div>
+            <!-- 이미지 박스 처리 -->
+            <div class="project-img-box">
+              <img src="./dessert.jpg" alt="디저트 상점 프로젝트 화면" />
+            </div>
+          </div>
+        </section>
       </section>
-
-    </section> <!-- content-area 닫기 -->
-  </main> <!-- main-container 닫기 -->
-
-</body>
+      <!-- content-area 닫기 -->
+    </main>
+    <!-- main-container 닫기 -->
+  </body>
 </html>
+
