@@ -1,0 +1,66 @@
+/* 모든 요소에 공통 적용 */
+* {
+  box-sizing: border-box; /* 패딩(안쪽 여백)과 테두리를 포함하여 전체 크기를 계산 (레이아웃 안 깨지게 필수 설정) */
+}
+
+/* 웹 페이지 전체(html) 설정 */
+html {
+  scroll-behavior: smooth; /* 상단 메뉴를 클릭하여 이동할 때 화면이 부드럽게 스크롤되며 내려가도록 설정 */
+}
+
+/* 주요 글자 및 레이아웃 태그들의 기본 여백 리셋 */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+table,
+caption,
+th,
+td,
+form,
+label {
+  margin: 0; /* 브라우저가 기본으로 주는 바깥쪽 여백을 0으로 초기화 */
+  padding: 0; /* 브라우저가 기본으로 주는 안쪽 여백을 0으로 초기화 */
+}
+
+/* 웹 페이지 본문(body) 기본 디자인 설정 */
+body {
+  min-width: 320px; /* 화면이 아무리 작아져도 최소 320px(모바일 최소 기준) 이하로는 줄어들지 않도록 보호 */
+  /* 배경에 부드러운 그라데이션 효과 적용 */
+  background:
+    radial-gradient(circle at top right, #ffe4dc 0, transparent 320px),
+    /* 우측 상단에 은은한 복숭아빛 원형 그라데이션 */
+    linear-gradient(180deg, #fff8f3 0%, #fffdfb 100%); /* 위에서 아래로 갈수록 아주 연한 베이지색에서 흰색으로 변하는 배경 */
+  color: #2f2a26; /* 기본 글자 색상을 따뜻한 느낌의 짙은 브라운 색상으로 설정 */
+  font-family:
+    "Pretendard", "Noto Sans KR", sans-serif; /* 1순위 Pretendard 폰트, 없으면 2순위 고딕체 폰트 적용 */
+  line-height: 1.5; /* 글자 줄간격(행간)을 1.5배로 설정하여 가독성을 높임 */
+}
+
+/* 리스트 스타일 리셋 */
+ul {
+  list-style: none; /* 목록(ul, li) 특유의 보기 싫은 점(•)을 지움 */
+}
+
+/* 링크(a) 스타일 리셋 */
+a {
+  color: inherit; /* 부모 태그의 글자 색상을 그대로 물려받음 (기본 파란색 글씨 지우기) */
+  text-decoration: none; /* 링크 밑에 생기는 기본 밑줄을 제거 */
+}
+
+/* 이미지(img) 기본 스타일 */
+img {
+  display: block; /* 이미지 아래에 미세하게 생기는 빈 공간(공백)을 없애기 위해 블록 요소로 변경 */
+  width: 100%; /* 이미지가 부모 박스 크기 밖으로 삐져나가지 않고 가로 폭에 딱 맞게 자동 조절되도록 설정 */
+}
+
+/* 폼 관련 태그들 스타일 통일 */
+button,
+input,
+select,
+textarea {
+  font: inherit; /* 버튼이나 입력창 안의 글자 폰트·크기를 body에 지정한 폰트와 똑같이 통일 */
+}
